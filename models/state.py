@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""A modulse containing the State model"""
+"""A modules containing the State model"""
 from models.base_model import BaseModel
 
 
