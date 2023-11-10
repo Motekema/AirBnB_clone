@@ -1,0 +1,13 @@
+footer {
+  background-color: #00ff00;
+  height: 60px;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  align-items: center; /* vertically center content */
+  justify-content: center;
+  box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.1); /* Add a subtle shadow at the top of the footer */
+  z-index: 1000; /* Ensure the footer stays above other elements */
+}
+

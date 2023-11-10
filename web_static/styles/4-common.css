@@ -1,0 +1,15 @@
+body {
+  margin: 0;
+  padding: 0;
+  color: #484848;
+  font-size: 16px; /* Slightly increase the font size for better readability */
+  font-family: 'Circular', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  line-height: 1.6; /* Adjust line height for better readability */
+}
+
+.container {
+  max-width: 1200px; /* Increase the max-width for larger screens */
+  margin: 30px auto;
+  padding: 0 20px; /* Add padding to the left and right */
+}
+
