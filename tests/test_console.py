@@ -3,7 +3,7 @@
 
 This module contains unit tests for the HBNBCommand class, which represents
 the command-line interface for an AirBnB clone web application. The tests cover
-functionality related to creating instances, showing details, counting instances,
+functionality related - creating instances,showing details, counting instances,
 and more.
 
 To run the tests:
@@ -23,6 +23,7 @@ from models import storage
 from models.base_model import BaseModel
 from models.user import User
 from tests import clear_stream
+
 
 class TestHBNBCommand(unittest.TestCase):
     """Represents the test class for the HBNBCommand class.
