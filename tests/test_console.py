@@ -17,7 +17,6 @@ import sqlalchemy
 import unittest
 from io import StringIO
 from unittest.mock import patch
-
 from console import HBNBCommand
 from models import storage
 from models.base_model import BaseModel
