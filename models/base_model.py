@@ -52,7 +52,7 @@ class BaseModel:
         of instance:
         - Instance attributes set will returned
         - keys __class__ is added with class name of object
-        - It created_at and updated_at must be converted to string object in ISO
+        - It created_at- updated_at must converted string object in ISO
         object
         """
         dict_1 = self.__dict__.copy()
