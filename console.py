@@ -98,7 +98,7 @@ class HBNBCommand(cmd.Cmd):
     def do_quit(self, argv):
         """It execut, exits console."""
         return True
-    
+
     def do_EOF(self, argv):
         """It EOF signal - exit program"""
         print("")
