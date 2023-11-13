@@ -15,7 +15,6 @@ from models.review import Review
 from models.amenity import Amenity
 
 
-
 class FileStorage:
     """
     The instances - JSON file and
