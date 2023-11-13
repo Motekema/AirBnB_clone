@@ -3,11 +3,17 @@
 import cmd
 import re
 from shlex import split
-from datetime import datetime
+
 import models
+from models.base_model import BaseModel
+from models.user import User
+from models.city import City
+from models.amenity import Amenity
+from models.place import Place
+from models.state import State
+from models.review import Review
 
-
-# A global constant since both functions within and outside use it.
+# A global constant since both functions within and outside uses it.
 CLASSES = [
     "BaseModel",
     "User",
@@ -40,9 +46,9 @@ def parse(arg):
 def check_args(args):
     """It checks if args valid
     Args:
-        args: string containing arguments passed to the command
+        args : tring containing arguments passed to command
     Returns:
-        An error if args is None or not a valid class, else arguments
+        An error if args is None or not valid class, else arguments
     """
     arg_list = parse(args)
 
@@ -55,18 +61,18 @@ def check_args(args):
 
 
 class HBNBCommand(cmd.Cmd):
-    """Its class that implements the console
+    """Its class that implements console
     for AirBnB web application
     """
     prompt = "(hbnb) "
     storage = models.storage
 
     def emptyline(self):
-        """Its command - executed when an empty line + <ENTER> key"""
+        """UIts command - executed when empty line + <ENTER> key"""
         pass
 
     def default(self, arg):
-        """It gets behavior for the cmd module when the input is invalid"""
+        """It gets behaviour for cmd module when input invalid"""
         action_map = {
             "all": self.do_all,
             "show": self.do_show,
@@ -90,16 +96,16 @@ class HBNBCommand(cmd.Cmd):
         return False
 
     def do_quit(self, argv):
-        """Its execute, exits console."""
+        """It execut, exits console."""
         return True
-
+    
     def do_EOF(self, argv):
-        """Its EOF signal - exit program"""
+        """It EOF signal - exit program"""
         print("")
         return True
 
     def do_create(self, argv):
-        """Its creates a new instance of BaseModel, saves it (- a JSON file)
+        """It creates new instance of BaseModel, saves it (- a JSON file)
         and prints id"""
         args = check_args(argv)
         if args:
@@ -107,7 +113,7 @@ class HBNBCommand(cmd.Cmd):
             self.storage.save()
 
     def do_show(self, argv):
-        """Its prints string representation of instance based
+        """It prints string representation of instance based
         on class name and id"""
         args = check_args(argv)
         if args:
@@ -121,7 +127,7 @@ class HBNBCommand(cmd.Cmd):
                     print(self.storage.all()[key])
 
     def do_all(self, argv):
-        """Its prints * string representation of all instances based or not
+        """It prints * string representation of all instances based or not
         based on class name"""
         arg_list = split(argv)
         objects = self.storage.all().values()
@@ -135,7 +141,7 @@ class HBNBCommand(cmd.Cmd):
                        if arg_list[0] in str(obj)])
 
     def do_destroy(self, argv):
-        """Its deletes class instance based on name and given id."""
+        """It deletes class instance based on name and given id."""
         arg_list = check_args(argv)
         if arg_list:
             if len(arg_list) == 1:
@@ -149,8 +155,8 @@ class HBNBCommand(cmd.Cmd):
                     print("** no instance found **")
 
     def do_update(self, argv):
-        """Its updates the instance based on class name and id by adding or
-        updating attribute and saves it - JSON file."""
+        """It updates instance based on class name and id by adding or
+        updating attribute and save it - JSON file."""
         arg_list = check_args(argv)
         if arg_list:
             if len(arg_list) == 1:
@@ -167,17 +173,15 @@ class HBNBCommand(cmd.Cmd):
                         if arg_list[2] in type(obj).__dict__:
                             v_type = type(obj.__class__.__dict__[arg_list[2]])
                             setattr(obj, arg_list[2], v_type(arg_list[3]))
-                            obj.updated_at = datetime.now()
                         else:
                             setattr(obj, arg_list[2], arg_list[3])
-                            obj.updated_at = datetime.now()
                 else:
                     print("** no instance found **")
 
             self.storage.save()
 
     def do_count(self, arg):
-        """Its retrieves the number of instances of a class"""
+        """It retrieve number of instances of a class"""
         arg1 = parse(arg)
         count = 0
         for obj in models.storage.all().values():
@@ -188,4 +192,3 @@ class HBNBCommand(cmd.Cmd):
 
 if __name__ == "__main__":
     HBNBCommand().cmdloop()
-
